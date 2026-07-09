@@ -1,332 +1,283 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>地震預警系統專案 — 簡報總覽</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-      min-height: 100vh;
-      padding: 2rem 1rem;
-    }
-    .container { max-width: 1200px; margin: 0 auto; }
-    header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    header h1 {
-      font-size: 2.5rem;
-      color: #2c3e50;
-      margin-bottom: 0.5rem;
-    }
-    header p {
-      font-size: 1.1rem;
-      color: #7f8c8d;
-    }
-    .subtitle {
-      font-size: 1rem;
-      color: #95a5a6;
-      margin-top: 0.25rem;
-    }
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>EEW Project Overview</title></head><body style="font-family:Segoe UI,sans-serif;max-width:1000px;margin:0 auto;padding:20px"><h1 style="color:#2c3e50;text-align:center">Earthquake Early Warning System</h1><p style="text-align:center;color:#7f8c8d;margin-bottom:40px">Project Overview - 4 Presentations</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:40px"><div style="background:#e8f4fd;border-radius:8px;padding:15px"><h3>JPGU 2025</h3><p style="color:#555">CWA Real-Time Seismic Data Processing and Monitoring</p></div><div style="background:#f0e6ff;border-radius:8px;padding:15px"><h3>AI &amp; LLM</h3><p style="color:#555">Next-Generation EEW with AI Agents</p></div><div style="background:#fef6e4;border-radius:8px;padding:15px"><h3>EEW Evolution</h3><p style="color:#555">Taiwan EEW System Evolution</p></div><div style="background:#e8f8f5;border-radius:8px;padding:15px"><h3>May 2026 Report</h3><p style="color:#555">EEW System Performance Report</p></div></div><h2 style="color:#2c3e50">Project Details</h2><div style="background:#f7f7f7;border-left:4px solid #3498db;margin:20px 0;padding:15px"><h3 style="margin:0 0 10px 0">01 JPGU CWA Seismic Data Processing</h3><pre style="white-space:pre-wrap;word-break:break-word;font-size:14px"># Real-Time Seismic Data Processing and Monitoring at CWA
+# Current Status and Future Directions
 
-    /* ── 簡報卡片區 ── */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
-    .card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 1.5rem;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      display: flex;
-      flex-direction: column;
-    }
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 36px rgba(0,0,0,0.10);
-    }
-    .card .icon {
-      font-size: 2rem;
-      margin-bottom: 0.75rem;
-    }
-    .card h3 {
-      font-size: 1.15rem;
-      color: #2c3e50;
-      margin-bottom: 0.5rem;
-      line-height: 1.4;
-    }
-    .card .meta {
-      font-size: 0.85rem;
-      color: #95a5a6;
-      margin-bottom: 0.75rem;
-    }
-    .card p {
-      font-size: 0.95rem;
-      color: #555;
-      flex: 1;
-      line-height: 1.6;
-    }
-    .card .tag {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.25rem 0.75rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      align-self: flex-start;
-    }
-    .tag-cwa { background: #e8f4fd; color: #2980b9; }
-    .tag-ai  { background: #f0e6ff; color: #8e44ad; }
-    .tag-edu { background: #fef6e4; color: #d35400; }
-    .tag-report { background: #e8f8f5; color: #16a085; }
+- Date: 2025-05-29  |  Conference: JPGU
+- Authors: Da-Yi Chen, Guan-Yi Song, Yu-Hsuan Chang
+- Organization: Seismological Center, CWA, Taiwan
 
-    /* ── Markdown 內容區 ── */
-    .md-section {
-      background: #fff;
-      border-radius: 16px;
-      padding: 2rem;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-      margin-top: 2rem;
-    }
-    .md-section h2 {
-      font-size: 1.6rem;
-      color: #2c3e50;
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid #eee;
-    }
-    .md-content {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-    .md-item {
-      background: #fafbfc;
-      border-radius: 12px;
-      padding: 1.25rem 1.5rem;
-      border-left: 4px solid #3498db;
-    }
-    .md-item h4 {
-      font-size: 1rem;
-      color: #2c3e50;
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .md-item h4 .badge {
-      background: #3498db;
-      color: #fff;
-      font-size: 0.7rem;
-      padding: 0.15rem 0.5rem;
-      border-radius: 10px;
-    }
-    .md-item pre {
-      background: #f0f2f5;
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      overflow-x: auto;
-      font-size: 0.9rem;
-      white-space: pre-wrap;
-      word-break: break-word;
-    }
-    .md-item p { font-size: 0.95rem; color: #555; line-height: 1.7; }
-    .md-item ul, .md-item ol { padding-left: 1.5rem; color: #555; font-size: 0.95rem; line-height: 1.7; }
-    .md-empty {
-      text-align: center;
-      padding: 3rem 1rem;
-      color: #bdc3c7;
-    }
-    .md-empty .big-icon { font-size: 3rem; margin-bottom: 0.75rem; }
+---
 
-    /* ── Footer ── */
-    footer {
-      text-align: center;
-      margin-top: 3rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(0,0,0,0.06);
-      color: #bdc3c7;
-      font-size: 0.85rem;
-    }
-  </style>
-</head>
-<body>
-<div class="container">
+## Seismic Monitoring Infrastructure
 
-  <header>
-    <h1>地震預警系統專案</h1>
-    <p>Earthquake Early Warning System — 簡報總覽</p>
-    <div class="subtitle">共 4 份簡報</div>
-  </header>
+- About 60 staff at Seismological Center, ~10 on 24/7 monitoring duty
+- **632 real-time stations** across Taiwan
+- Three-layer architecture: Field Stations -&gt; Integration -&gt; Application
 
-  <!-- ═══ 簡報卡片 ═══ -->
-  <div class="grid" id="cardGrid"></div>
+### Open-Source Software
+| Software | Description |
+|----------|-------------|
+| **Earthworm** | USGS-developed, modular, real-time seismic data processing |
+| **SeisComP** | Modern open-source platform, acquisition to alerts |
 
-  <!-- ═══ Markdown 檔案內容 ═══ -->
-  <section class="md-section">
-    <h2>📄 Markdown 文件</h2>
-    <div class="md-content" id="mdContent">
-      <div class="md-empty">
-        <div class="big-icon">📭</div>
-        <p>目前目錄中沒有任何 <code>.md</code> 檔案。</p>
-        <p style="margin-top:0.5rem; font-size:0.85rem;">將 <code>.md</code> 檔案放入此目錄後重新整理頁面即可自動載入。</p>
-      </div>
-    </div>
-  </section>
+---
 
-  <footer>
-    中央氣象署 &bull; 地震預警系統 &bull; <span id="year"></span>
-  </footer>
-</div>
+## Earthquake Early Warning (eBEAR) System
 
-<script>
-  /* ── 簡報資料 ── */
-  const presentations = [
-    {
-      icon: "📡",
-      title: "Real-Time Seismic Data Processing and Monitoring at CWA — Current Status and Future Directions",
-      meta: "2025-05-29 ・ JPGU",
-      desc: "中央氣象署現行即時地震資料處理與監測的技術架構、運作現況及未來發展方向。",
-      tag: "CWA 即時監測",
-      tagClass: "tag-cwa"
-    },
-    {
-      icon: "🤖",
-      title: "AI 代理群與大型語言模型在次世代地震測報之整合與應用",
-      meta: "2026-06-03",
-      desc: "探討 AI Agent、LLM 等技術如何整合至次世代地震測報系統，提升預警效率與自動化程度。",
-      tag: "AI 整合",
-      tagClass: "tag-ai"
-    },
-    {
-      icon: "🔔",
-      title: "臺灣地震預警系統的演進與發展",
-      meta: "2026-06-12 ・ 嘉義災防宣導",
-      desc: "介紹臺灣地震預警系統的歷史演進、技術突破及未來展望。",
-      tag: "防災宣導",
-      tagClass: "tag-edu"
-    },
-    {
-      icon: "📊",
-      title: "地震預警系統報告",
-      meta: "2026-05",
-      desc: "地震預警系統整體運作報告，涵蓋系統效能、監測數據統計與改善建議。",
-      tag: "系統報告",
-      tagClass: "tag-report"
-    }
-  ];
+- Earthworm Based Earthquake Alert Reporting system
+- Available on Docker Hub: docker pull cwadayi/earthworm_ubuntu22.04_eew:v1
 
-  const cardGrid = document.getElementById('cardGrid');
-  cardGrid.innerHTML = presentations.map(p => `
-    <div class="card">
-      <div class="icon">${p.icon}</div>
-      <h3>${p.title}</h3>
-      <div class="meta">${p.meta}</div>
-      <p>${p.desc}</p>
-      <span class="tag ${p.tagClass}">${p.tag}</span>
-    </div>
-  `).join('');
+### Case: 2025/01/21 M6.4 Dapu Earthquake
+- EEW system successfully detected and issued alert
 
-  /* ── 已知的 .md 檔案清單（手動維護） ── */
-  const knownMDFiles = [
-    "01_JPGU_CWA_Seismic_Data_Processing.md",
-    "02_AI_Agents_LLM_NextGen_EEW.md",
-    "03_Taiwan_EEW_Evolution.md",
-    "04_2026_May_EEW_Report.md"
-  ];
+### Case: 2024/04/03 M7.2 Hualien Earthquake
+- First and second EEW alerts with real-time intensity observations
 
-  renderMD(knownMDFiles);
+---
 
-  async function renderMD(files) {
-    const container = document.getElementById('mdContent');
-    if (!files || files.length === 0) {
-      container.innerHTML =
-        `<div class="md-empty"><div class="big-icon">📭</div>
-         <p>目前目錄中沒有任何 <code>.md</code> 檔案。</p>
-         <p style="margin-top:0.5rem; font-size:0.85rem;">將 <code>.md</code> 檔案放入此目錄後重新整理頁面即可自動載入。</p></div>`;
-      return;
-    }
+## Real-Time Monitoring via Grafana
 
-    let html = '';
-    for (const file of files) {
-      try {
-        const resp = await fetch(`./${encodeURIComponent(file)}`);
-        if (!resp.ok) {
-          html += mdErrorItem(file, '無法讀取檔案');
-          continue;
-        }
-        const text = await resp.text();
-        html += mdItemHTML(file, text);
-      } catch (e) {
-        html += mdErrorItem(file, e.message);
-      }
-    }
-    container.innerHTML = html;
-  }
+Dashboards for:
+1. Wave height (OBS pressure gauge network)
+2. Data latency monitoring
+3. Data availability
+4. EEW dissemination status
+5. Seismic waveform display
 
-  function mdItemHTML(filename, raw) {
-    // 基本 .md 轉換（支援標題、段落、列表、程式碼）
-    const lines = raw.split('\n');
-    let body = '';
-    let inCode = false;
-    let codeContent = '';
-    for (const line of lines) {
-      if (line.startsWith('```')) {
-        if (inCode) {
-          body += `<pre>${escapeHtml(codeContent)}</pre>`;
-          codeContent = '';
-          inCode = false;
-        } else {
-          inCode = true;
-        }
-        continue;
-      }
-      if (inCode) {
-        codeContent += line + '\n';
-        continue;
-      }
-      if (line.startsWith('# ')) {
-        body += `<h4>${escapeHtml(line.slice(2))}</h4>`;
-      } else if (line.startsWith('## ')) {
-        body += `<h5 style="font-size:1rem;color:#2c3e50;margin:0.75rem 0 0.25rem;">${escapeHtml(line.slice(3))}</h5>`;
-      } else if (line.startsWith('- ')) {
-        body += `<li>${escapeHtml(line.slice(2))}</li>`;
-      } else if (line.startsWith('* ')) {
-        body += `<li>${escapeHtml(line.slice(2))}</li>`;
-      } else if (/^\d+\.\s/.test(line)) {
-        body += `<li>${escapeHtml(line.replace(/^\d+\.\s/, ''))}</li>`;
-      } else if (line.trim() === '') {
-        // 前後有 list 時換行
-      } else {
-        body += `<p>${escapeHtml(line)}</p>`;
-      }
-    }
-    if (inCode && codeContent) {
-      body += `<pre>${escapeHtml(codeContent)}</pre>`;
-    }
+---
 
-    return `<div class="md-item"><h4><span class="badge">MD</span> ${escapeHtml(filename)}</h4>${body}</div>`;
-  }
+## LLM for EEW
 
-  function mdErrorItem(filename, msg) {
-    return `<div class="md-item" style="border-left-color:#e74c3c;"><h4><span class="badge" style="background:#e74c3c;">MD</span> ${escapeHtml(filename)}</h4><p style="color:#e74c3c;">⚠ ${escapeHtml(msg)}</p></div>`;
-  }
+- Training large language models using historical seismic data
 
-  function escapeHtml(s) {
-    const div = document.createElement('div');
-    div.textContent = s;
-    return div.innerHTML;
-  }
+---
 
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+## Summary
+1. Robust 24/7 seismic infrastructure
+2. Real-time processing with Earthworm + SeisComP
+3. Advanced observability via Grafana dashboards
+</pre></div><div style="background:#f7f7f7;border-left:4px solid #3498db;margin:20px 0;padding:15px"><h3 style="margin:0 0 10px 0">02 AI Agents LLM NextGen EEW</h3><pre style="white-space:pre-wrap;word-break:break-word;font-size:14px"># AI Agents and LLMs in Next-Generation Earthquake Early Warning
 
-</body>
-</html>
+- Date: 2026-06-03  |  Venue: Taipei University of Municipal Affairs
+- Speaker: Da-Yi Chen  |  Organization: CWA Seismological Center
+
+---
+
+## Taiwan Seismic Risk
+
+- Philippine Sea Plate vs. Eurasia: **7-8 cm/yr** convergence
+- ~**100 earthquakes/day**, ~**100 felt/yr**, major disaster every **30-40 yr**
+- ~**3000 observation channels**, 100Hz sampling
+
+### Recent Major Disasters
+| Date | Event | Impact |
+|------|-------|--------|
+| 2016/02/06 | M6.6 Meinong | 1069 casualties |
+| 2018/02/06 | M6.2 Hualien | 308 casualties |
+| 2024/04/03 | M7.1 Hualien | 621 casualties |
+| 2025/01/21 | M6.4 Dapu | 1810 houses damaged |
+
+---
+
+## EEW Architecture
+
+### Pipeline
+Detect P-wave -&gt; Grouping -&gt; Location -&gt; Magnitude -&gt; Intensity
+
+### ML for Intensity
+- Use **3 sec P-wave**, ~**15 sec leading time**
+
+---
+
+## Large Earthquake Model (LEM)
+
+### SeisWav2Vec 2.0
+- Adapted from Wav2Vec 2.0 (speech), contrastive learning
+- Self-supervised: extracts features from unlabeled data
+
+### Components
+1. Feature Encoder: waveform -&gt; embeddings
+2. Context Encoder: 12-layer Transformer
+3. Masking &amp; Quantization: masked prediction
+
+### Workflow
+Pre-training (unlabeled) -&gt; Fine-tuning (CNN Decoder) -&gt; Inference
+
+---
+
+## Hermes Multi-Agent System
+
+| Agent | Role | Responsibilities |
+|-------|------|-----------------|
+| my_agent | EEW Manager | Cron, anomaly alerts, daily summary |
+| secondary_agent | Integration Engineer | Hermes forwarding, task dispatch |
+| seismo_agent | Seismology Assistant | .rep parsing, latency, plots |
+| seismo | Researcher | Modeling, experiments, trends |
+
+### Automated Workflow
+Event trigger (.rep) -&gt; Data dispatch -&gt; Plotting -&gt; Modeling -&gt; Report
+
+---
+
+## AI Workflow Evolution
+
+| Period | Phase | Key Feature |
+|--------|-------|-------------|
+| 2022-2024 | Chat Era | ChatGPT, AI as assistant |
+| 2024-2025 | IDE Integration | Cursor, Windsurf, Copilot Agent |
+| 2025-2026 | Autonomous Agents | OpenClaw, Hermes, Claude Code |
+
+---
+
+## Conclusion
+- SSL enables feature extraction from unlabeled data
+- LEM brings new era for seismic monitoring
+- Multi-agent collaboration reshaping EEW workflows
+</pre></div><div style="background:#f7f7f7;border-left:4px solid #3498db;margin:20px 0;padding:15px"><h3 style="margin:0 0 10px 0">03 Taiwan EEW Evolution</h3><pre style="white-space:pre-wrap;word-break:break-word;font-size:14px"># Evolution of Taiwan Earthquake Early Warning System
+
+- Date: 2026-06-12  |  Event: Chiayi County Disaster Prevention Training
+- Speaker: Da-Yi Chen  |  Organization: CWA Seismological Center
+
+---
+
+## Taiwan Seismic Environment
+
+- Philippine Sea vs. Eurasia: **7-8 cm/yr** convergence
+- **7 major disasters** since 1900 (&gt;100 deaths each)
+- Daily ~100 quakes, annual ~100 felt, every 30-40 yr major disaster
+
+### Recent Disasters (10yr)
+- 2016 M6.6 Meinong: 1069 casualties
+- 2018 M6.2 Hualien: 308 casualties
+- 2024 M7.1 Hualien: 621 casualties
+- 2025 M6.4 Dapu: 1810 houses damaged
+
+---
+
+## Warning Principle
+
+- P-wave: fast, small amplitude | S-wave: slow, destructive
+- Estimate magnitude from P-wave before S-wave arrives
+
+### Alert Conditions
+- M &gt;= 4.5 with intensity &gt;= 4, or M &gt;= 6 with intensity &gt;= 3
+
+### Channels
+PWS (cell broadcast), TV, internet, App, LINE, website
+
+---
+
+## Race Against Seismic Waves
+
+| Period | Warning Time | Blind Zone |
+|--------|-------------|------------|
+| 30 yr ago | **102 sec** | - |
+| Current | **7 sec** | **25 km** (50% area reduction) |
+
+---
+
+## Technical Limitations
+
+### False Alarms
+- 2022/09/18 false PWS in Yunlin-Chiayi-Tainan
+- Double earthquakes cause misjudgment
+
+### Missed Events
+- Two events **4 sec apart**; system processed only first
+
+### Deep Earthquakes
+- &gt;100km depth may underestimate surface intensity
+
+### Tsunami
+
+| Trench | Location |
+|--------|----------|
+| Ryukyu | East Taiwan |
+| Yap | Southeast Taiwan |
+| Manila | South Taiwan |
+
+- **6 warning zones**, **4 wave-height levels**
+
+#### Case: 2024/04/03 M7.2 Hualien
+07:58 EQ -&gt; 08:11 Tsunami W1 -&gt; 10:00 W2 -&gt; 11:10 Cancel
+
+#### Case: 2025/07/30 M8.8 Kamchatka
+07:25 EQ -&gt; 07:38 Info -&gt; 09:12 Alert -&gt; 11:40 Warning -&gt; 17:10 Cancel
+
+---
+
+## Distribution Network
+
+- Direct to **&gt;4500 units**: 4100 schools, highways, railways, NCDR
+
+### AI for Intensity
+- **3 sec P-wave** -&gt; ~**15 sec leading time**
+
+---
+
+## Conclusion
+1. Continuous EEW performance improvement
+2. Strengthen public-private cooperation
+3. From 102 sec to 7 sec - constant evolution
+</pre></div><div style="background:#f7f7f7;border-left:4px solid #3498db;margin:20px 0;padding:15px"><h3 style="margin:0 0 10px 0">04 2026 May EEW Report</h3><pre style="white-space:pre-wrap;word-break:break-word;font-size:14px"># May 2026 - Earthquake Early Warning System Report
+
+- Reporter: Yu-Chien Lin  |  Organization: CWA Seismological Center
+- Period: May 2026
+
+---
+
+## Performance Statistics
+
+### Fastest Warning
+- **9.7 seconds**
+
+### Issuance Counts
+| Channel | Count |
+|---------|-------|
+| PWS | 6 |
+| TV | 6 |
+| APP &amp; School | 11 |
+
+---
+
+## Case Studies
+
+### Case 1: 05/01 M6.1 E. Taiwan Offshore
+- 1st report: 18.5 sec, Geometric center, Est. M5.0
+- Intensity accuracy (+-1): **80%**
+
+### Case 2: 05/12 M5.6 E. Taiwan Offshore
+- 1st report: **9.7 sec**, Geometric center, Est. M5.3
+- Intensity accuracy (+-1): **95%** (month best)
+
+### Case 3: 05/17 M5.1 Puli, Nantou (Inland)
+- 1st report: 11.9 sec, Geometric center, Est. M5.0
+- Intensity accuracy (+-1): **85%**
+
+---
+
+## Analysis Tools
+
+| Feature | Description |
+|---------|-------------|
+| Earthquake Info | Epicenter, magnitude, depth |
+| EEW Summary | Parameters for each report |
+| Epicenter Map | Visual distribution |
+| Error Analysis | Estimated vs. observed |
+| Station Trigger Rate | Trigger statistics |
+
+### Contingency Map
+- S-wave arrival after fastest solution
+- Blind zone = solution time x 3.5 km/s
+
+### Trigger Rate
+- Radius = farthest station distance from epicenter
+- Trigger ratio within circle
+
+---
+
+## Summary
+1. Fastest warning: ~9.7 sec
+2. Issuances: PWS 6, TV 6, APP/School 11
+3. Accuracy: 80-95% (+-1 intensity level)
+4. Best: 05/12 M5.6, 9.7 sec, 95% accuracy
+</pre></div><hr style="margin-top:40px"><footer style="text-align:center;color:#95a5a6">Central Weather Administration - EEW Project</footer></body></html>
