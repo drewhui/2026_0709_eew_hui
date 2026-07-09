@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>地震預警系統專案 — 簡報總覽</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.1rem;
+      color: #7f8c8d;
+    }
+    .subtitle {
+      font-size: 1rem;
+      color: #95a5a6;
+      margin-top: 0.25rem;
+    }
+
+    /* ── 簡報卡片區 ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.10);
+    }
+    .card .icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+    .card h3 {
+      font-size: 1.15rem;
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: #95a5a6;
+      margin-bottom: 0.75rem;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #555;
+      flex: 1;
+      line-height: 1.6;
+    }
+    .card .tag {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      align-self: flex-start;
+    }
+    .tag-cwa { background: #e8f4fd; color: #2980b9; }
+    .tag-ai  { background: #f0e6ff; color: #8e44ad; }
+    .tag-edu { background: #fef6e4; color: #d35400; }
+    .tag-report { background: #e8f8f5; color: #16a085; }
+
+    /* ── Markdown 內容區 ── */
+    .md-section {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      margin-top: 2rem;
+    }
+    .md-section h2 {
+      font-size: 1.6rem;
+      color: #2c3e50;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #eee;
+    }
+    .md-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .md-item {
+      background: #fafbfc;
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      border-left: 4px solid #3498db;
+    }
+    .md-item h4 {
+      font-size: 1rem;
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .md-item h4 .badge {
+      background: #3498db;
+      color: #fff;
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 10px;
+    }
+    .md-item pre {
+      background: #f0f2f5;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .md-item p { font-size: 0.95rem; color: #555; line-height: 1.7; }
+    .md-item ul, .md-item ol { padding-left: 1.5rem; color: #555; font-size: 0.95rem; line-height: 1.7; }
+    .md-empty {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: #bdc3c7;
+    }
+    .md-empty .big-icon { font-size: 3rem; margin-bottom: 0.75rem; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      color: #bdc3c7;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>地震預警系統專案</h1>
+    <p>Earthquake Early Warning System — 簡報總覽</p>
+    <div class="subtitle">共 4 份簡報</div>
+  </header>
+
+  <!-- ═══ 簡報卡片 ═══ -->
+  <div class="grid" id="cardGrid"></div>
+
+  <!-- ═══ Markdown 檔案內容 ═══ -->
+  <section class="md-section">
+    <h2>📄 Markdown 文件</h2>
+    <div class="md-content" id="mdContent">
+      <div class="md-empty">
+        <div class="big-icon">📭</div>
+        <p>目前目錄中沒有任何 <code>.md</code> 檔案。</p>
+        <p style="margin-top:0.5rem; font-size:0.85rem;">將 <code>.md</code> 檔案放入此目錄後重新整理頁面即可自動載入。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    中央氣象署 &bull; 地震預警系統 &bull; <span id="year"></span>
+  </footer>
+</div>
+
+<script>
+  /* ── 簡報資料 ── */
+  const presentations = [
+    {
+      icon: "📡",
+      title: "Real-Time Seismic Data Processing and Monitoring at CWA — Current Status and Future Directions",
+      meta: "2025-05-29 ・ JPGU",
+      desc: "中央氣象署現行即時地震資料處理與監測的技術架構、運作現況及未來發展方向。",
+      tag: "CWA 即時監測",
+      tagClass: "tag-cwa"
+    },
+    {
+      icon: "🤖",
+      title: "AI 代理群與大型語言模型在次世代地震測報之整合與應用",
+      meta: "2026-06-03",
+      desc: "探討 AI Agent、LLM 等技術如何整合至次世代地震測報系統，提升預警效率與自動化程度。",
+      tag: "AI 整合",
+      tagClass: "tag-ai"
+    },
+    {
+      icon: "🔔",
+      title: "臺灣地震預警系統的演進與發展",
+      meta: "2026-06-12 ・ 嘉義災防宣導",
+      desc: "介紹臺灣地震預警系統的歷史演進、技術突破及未來展望。",
+      tag: "防災宣導",
+      tagClass: "tag-edu"
+    },
+    {
+      icon: "📊",
+      title: "地震預警系統報告",
+      meta: "2026-05",
+      desc: "地震預警系統整體運作報告，涵蓋系統效能、監測數據統計與改善建議。",
+      tag: "系統報告",
+      tagClass: "tag-report"
+    }
+  ];
+
+  const cardGrid = document.getElementById('cardGrid');
+  cardGrid.innerHTML = presentations.map(p => `
+    <div class="card">
+      <div class="icon">${p.icon}</div>
+      <h3>${p.title}</h3>
+      <div class="meta">${p.meta}</div>
+      <p>${p.desc}</p>
+      <span class="tag ${p.tagClass}">${p.tag}</span>
+    </div>
+  `).join('');
+
+  /* ── 載入 .md 檔案 ── */
+  (async function loadMarkdown() {
+    try {
+      // 嘗試取得目錄下所有 .md 檔案
+      // 第一種方式：若 GitHub Pages / 靜態伺服器有目錄列表，則用 folder listing
+      // 這裡用較通用的方式：手動列舉常見檔名（若存在）
+      // 更穩健的方式：由建置工具產生檔案清單，或使用 server-side 目錄列表
+      // 此處實作一個 fetch 嘗試清單
+      const mdFiles = [];
+      // 我們無法在純前端動態枚舉目錄，因此需由後端或建置步驟提供
+      // 但可以透過 HEAD 請求嘗試常見檔名，或由 meta.json 提供
+      // 改為嘗試讀取同目錄下的 .md 檔案清單（若伺服器提供 / 目錄列表）
+
+      // 嘗試方法：先 fetch 一個假設存在的 meta-md.json
+      let fileList = [];
+      try {
+        const resp = await fetch('./meta-md.json');
+        if (resp.ok) {
+          fileList = await resp.json();
+        }
+      } catch (_) {}
+
+      // 若無 meta-md.json，則嘗試透過 / 路徑取得目錄列表（僅部分伺服器支援）
+      // 替代方案：建置時產生 md file list，此處先降級為空
+      if (fileList.length === 0) {
+        // 嘗試從目前頁面所在目錄推測（非標準作法，但可嘗試）
+        // 註：此方法不保證在所有環境運作
+        try {
+          const dirResp = await fetch('./');
+          if (dirResp.ok) {
+            const html = await dirResp.text();
+            // 從 directory listing HTML 中抓取 .md 連結
+            const regex = /<a href="([^"]+\.md)"/gi;
+            let match;
+            while ((match = regex.exec(html)) !== null) {
+              const name = decodeURIComponent(match[1]);
+              if (!fileList.includes(name)) fileList.push(name);
+            }
+          }
+        } catch (_) {}
+      }
+
+      renderMD(fileList);
+    } catch (e) {
+      document.getElementById('mdContent').innerHTML =
+        `<div class="md-empty"><div class="big-icon">⚠️</div><p>讀取 Markdown 檔案時發生錯誤。</p></div>`;
+    }
+  })();
+
+  async function renderMD(files) {
+    const container = document.getElementById('mdContent');
+    if (!files || files.length === 0) {
+      container.innerHTML =
+        `<div class="md-empty"><div class="big-icon">📭</div>
+         <p>目前目錄中沒有任何 <code>.md</code> 檔案。</p>
+         <p style="margin-top:0.5rem; font-size:0.85rem;">將 <code>.md</code> 檔案放入此目錄後重新整理頁面即可自動載入。</p></div>`;
+      return;
+    }
+
+    let html = '';
+    for (const file of files) {
+      try {
+        const resp = await fetch(`./${encodeURIComponent(file)}`);
+        if (!resp.ok) {
+          html += mdErrorItem(file, '無法讀取檔案');
+          continue;
+        }
+        const text = await resp.text();
+        html += mdItemHTML(file, text);
+      } catch (e) {
+        html += mdErrorItem(file, e.message);
+      }
+    }
+    container.innerHTML = html;
+  }
+
+  function mdItemHTML(filename, raw) {
+    // 基本 .md 轉換（支援標題、段落、列表、程式碼）
+    const lines = raw.split('\n');
+    let body = '';
+    let inCode = false;
+    let codeContent = '';
+    for (const line of lines) {
+      if (line.startsWith('```')) {
+        if (inCode) {
+          body += `<pre>${escapeHtml(codeContent)}</pre>`;
+          codeContent = '';
+          inCode = false;
+        } else {
+          inCode = true;
+        }
+        continue;
+      }
+      if (inCode) {
+        codeContent += line + '\n';
+        continue;
+      }
+      if (line.startsWith('# ')) {
+        body += `<h4>${escapeHtml(line.slice(2))}</h4>`;
+      } else if (line.startsWith('## ')) {
+        body += `<h5 style="font-size:1rem;color:#2c3e50;margin:0.75rem 0 0.25rem;">${escapeHtml(line.slice(3))}</h5>`;
+      } else if (line.startsWith('- ')) {
+        body += `<li>${escapeHtml(line.slice(2))}</li>`;
+      } else if (line.startsWith('* ')) {
+        body += `<li>${escapeHtml(line.slice(2))}</li>`;
+      } else if (/^\d+\.\s/.test(line)) {
+        body += `<li>${escapeHtml(line.replace(/^\d+\.\s/, ''))}</li>`;
+      } else if (line.trim() === '') {
+        // 前後有 list 時換行
+      } else {
+        body += `<p>${escapeHtml(line)}</p>`;
+      }
+    }
+    if (inCode && codeContent) {
+      body += `<pre>${escapeHtml(codeContent)}</pre>`;
+    }
+
+    return `<div class="md-item"><h4><span class="badge">MD</span> ${escapeHtml(filename)}</h4>${body}</div>`;
+  }
+
+  function mdErrorItem(filename, msg) {
+    return `<div class="md-item" style="border-left-color:#e74c3c;"><h4><span class="badge" style="background:#e74c3c;">MD</span> ${escapeHtml(filename)}</h4><p style="color:#e74c3c;">⚠ ${escapeHtml(msg)}</p></div>`;
+  }
+
+  function escapeHtml(s) {
+    const div = document.createElement('div');
+    div.textContent = s;
+    return div.innerHTML;
+  }
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
