@@ -234,54 +234,15 @@
     </div>
   `).join('');
 
-  /* ── 載入 .md 檔案 ── */
-  (async function loadMarkdown() {
-    try {
-      // 嘗試取得目錄下所有 .md 檔案
-      // 第一種方式：若 GitHub Pages / 靜態伺服器有目錄列表，則用 folder listing
-      // 這裡用較通用的方式：手動列舉常見檔名（若存在）
-      // 更穩健的方式：由建置工具產生檔案清單，或使用 server-side 目錄列表
-      // 此處實作一個 fetch 嘗試清單
-      const mdFiles = [];
-      // 我們無法在純前端動態枚舉目錄，因此需由後端或建置步驟提供
-      // 但可以透過 HEAD 請求嘗試常見檔名，或由 meta.json 提供
-      // 改為嘗試讀取同目錄下的 .md 檔案清單（若伺服器提供 / 目錄列表）
+  /* ── 已知的 .md 檔案清單（手動維護） ── */
+  const knownMDFiles = [
+    "01_JPGU_CWA_Seismic_Data_Processing.md",
+    "02_AI_Agents_LLM_NextGen_EEW.md",
+    "03_Taiwan_EEW_Evolution.md",
+    "04_2026_May_EEW_Report.md"
+  ];
 
-      // 嘗試方法：先 fetch 一個假設存在的 meta-md.json
-      let fileList = [];
-      try {
-        const resp = await fetch('./meta-md.json');
-        if (resp.ok) {
-          fileList = await resp.json();
-        }
-      } catch (_) {}
-
-      // 若無 meta-md.json，則嘗試透過 / 路徑取得目錄列表（僅部分伺服器支援）
-      // 替代方案：建置時產生 md file list，此處先降級為空
-      if (fileList.length === 0) {
-        // 嘗試從目前頁面所在目錄推測（非標準作法，但可嘗試）
-        // 註：此方法不保證在所有環境運作
-        try {
-          const dirResp = await fetch('./');
-          if (dirResp.ok) {
-            const html = await dirResp.text();
-            // 從 directory listing HTML 中抓取 .md 連結
-            const regex = /<a href="([^"]+\.md)"/gi;
-            let match;
-            while ((match = regex.exec(html)) !== null) {
-              const name = decodeURIComponent(match[1]);
-              if (!fileList.includes(name)) fileList.push(name);
-            }
-          }
-        } catch (_) {}
-      }
-
-      renderMD(fileList);
-    } catch (e) {
-      document.getElementById('mdContent').innerHTML =
-        `<div class="md-empty"><div class="big-icon">⚠️</div><p>讀取 Markdown 檔案時發生錯誤。</p></div>`;
-    }
-  })();
+  renderMD(knownMDFiles);
 
   async function renderMD(files) {
     const container = document.getElementById('mdContent');
