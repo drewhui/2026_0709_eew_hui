@@ -1,4 +1,212 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>EEW Project Overview</title></head><body style="font-family:Segoe UI,sans-serif;max-width:1000px;margin:0 auto;padding:20px"><h1 style="color:#2c3e50;text-align:center">Earthquake Early Warning System</h1><p style="text-align:center;color:#7f8c8d;margin-bottom:40px">Project Overview - 4 Presentations</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:40px"><div style="background:#e8f4fd;border-radius:8px;padding:15px"><h3>JPGU 2025</h3><p style="color:#555">CWA Real-Time Seismic Data Processing and Monitoring</p></div><div style="background:#f0e6ff;border-radius:8px;padding:15px"><h3>AI &amp; LLM</h3><p style="color:#555">Next-Generation EEW with AI Agents</p></div><div style="background:#fef6e4;border-radius:8px;padding:15px"><h3>EEW Evolution</h3><p style="color:#555">Taiwan EEW System Evolution</p></div><div style="background:#e8f8f5;border-radius:8px;padding:15px"><h3>May 2026 Report</h3><p style="color:#555">EEW System Performance Report</p></div></div><h2 style="color:#2c3e50">Project Details</h2><div style="background:#f7f7f7;border-left:4px solid #3498db;margin:20px 0;padding:15px"><h3 style="margin:0 0 10px 0">01 JPGU CWA Seismic Data Processing</h3><pre style="white-space:pre-wrap;word-break:break-word;font-size:14px"># Real-Time Seismic Data Processing and Monitoring at CWA
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>地震預警系統專案 — 簡報總覽</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.1rem;
+      color: #7f8c8d;
+    }
+    .subtitle {
+      font-size: 1rem;
+      color: #95a5a6;
+      margin-top: 0.25rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.10);
+    }
+    .card .icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+    .card h3 {
+      font-size: 1.15rem;
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: #95a5a6;
+      margin-bottom: 0.75rem;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #555;
+      flex: 1;
+      line-height: 1.6;
+    }
+    .card .tag {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      align-self: flex-start;
+    }
+    .tag-cwa { background: #e8f4fd; color: #2980b9; }
+    .tag-ai  { background: #f0e6ff; color: #8e44ad; }
+    .tag-edu { background: #fef6e4; color: #d35400; }
+    .tag-report { background: #e8f8f5; color: #16a085; }
+    .md-section {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      margin-top: 2rem;
+    }
+    .md-section h2 {
+      font-size: 1.6rem;
+      color: #2c3e50;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #eee;
+    }
+    .md-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .md-item {
+      background: #fafbfc;
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      border-left: 4px solid #3498db;
+    }
+    .md-item h4 {
+      font-size: 1rem;
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .md-item h4 .badge {
+      background: #3498db;
+      color: #fff;
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 10px;
+    }
+    .md-item pre {
+      background: #f0f2f5;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .md-item p { font-size: 0.95rem; color: #555; line-height: 1.7; }
+    .md-item ul, .md-item ol { padding-left: 1.5rem; color: #555; font-size: 0.95rem; line-height: 1.7; }
+    .md-item li { margin: 2px 0; }
+    .md-item table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: 0.9rem; }
+    .md-item td, .md-item th { border: 1px solid #ddd; padding: 6px 8px; text-align: left; }
+    .md-item th { background: #f0f2f5; font-weight: 600; }
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      color: #bdc3c7;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>地震預警系統專案</h1>
+    <p>Earthquake Early Warning System — 簡報總覽</p>
+    <div class="subtitle">共 4 份簡報</div>
+  </header>
+
+  <div class="grid" id="cardGrid">
+    <div class="card">
+      <div class="icon">📡</div>
+      <h3>Real-Time Seismic Data Processing and Monitoring at CWA — Current Status and Future Directions</h3>
+      <div class="meta">2025-05-29 ・ JPGU</div>
+      <p>中央氣象署現行即時地震資料處理與監測的技術架構、運作現況及未來發展方向。</p>
+      <span class="tag tag-cwa">CWA 即時監測</span>
+    </div>
+    <div class="card">
+      <div class="icon">🤖</div>
+      <h3>AI 代理群與大型語言模型在次世代地震測報之整合與應用</h3>
+      <div class="meta">2026-06-03</div>
+      <p>探討 AI Agent、LLM 等技術如何整合至次世代地震測報系統，提升預警效率與自動化程度。</p>
+      <span class="tag tag-ai">AI 整合</span>
+    </div>
+    <div class="card">
+      <div class="icon">🔔</div>
+      <h3>臺灣地震預警系統的演進與發展</h3>
+      <div class="meta">2026-06-12 ・ 嘉義災防宣導</div>
+      <p>介紹臺灣地震預警系統的歷史演進、技術突破及未來展望。</p>
+      <span class="tag tag-edu">防災宣導</span>
+    </div>
+    <div class="card">
+      <div class="icon">📊</div>
+      <h3>地震預警系統報告</h3>
+      <div class="meta">2026-05</div>
+      <p>地震預警系統整體運作報告，涵蓋系統效能、監測數據統計與改善建議。</p>
+      <span class="tag tag-report">系統報告</span>
+    </div>
+  </div>
+
+  <section class="md-section">
+    <h2>專案內容摘要</h2>
+    <div class="md-content" id="mdContent">
+      <div class="md-empty" id="mdEmpty" style="text-align:center;padding:2rem;color:#bdc3c7">
+        <p style="font-size:1.2rem">載入中...</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    中央氣象署 &bull; 地震預警系統 &bull; <span id="year"></span>
+  </footer>
+</div>
+
+<script>
+  /* MD content embedded from .md files */
+  const mdFiles = [
+    {file:'01_JPGU_CWA_Seismic_Data_Processing.md',text:`# Real-Time Seismic Data Processing and Monitoring at CWA
 # Current Status and Future Directions
 
 - Date: 2025-05-29  |  Conference: JPGU
@@ -11,7 +219,7 @@
 
 - About 60 staff at Seismological Center, ~10 on 24/7 monitoring duty
 - **632 real-time stations** across Taiwan
-- Three-layer architecture: Field Stations -&gt; Integration -&gt; Application
+- Three-layer architecture: Field Stations -> Integration -> Application
 
 ### Open-Source Software
 | Software | Description |
@@ -55,7 +263,8 @@ Dashboards for:
 1. Robust 24/7 seismic infrastructure
 2. Real-time processing with Earthworm + SeisComP
 3. Advanced observability via Grafana dashboards
-</pre></div><div style="background:#f7f7f7;border-left:4px solid #3498db;margin:20px 0;padding:15px"><h3 style="margin:0 0 10px 0">02 AI Agents LLM NextGen EEW</h3><pre style="white-space:pre-wrap;word-break:break-word;font-size:14px"># AI Agents and LLMs in Next-Generation Earthquake Early Warning
+`},
+    {file:'02_AI_Agents_LLM_NextGen_EEW.md',text:`# AI Agents and LLMs in Next-Generation Earthquake Early Warning
 
 - Date: 2026-06-03  |  Venue: Taipei University of Municipal Affairs
 - Speaker: Da-Yi Chen  |  Organization: CWA Seismological Center
@@ -81,7 +290,7 @@ Dashboards for:
 ## EEW Architecture
 
 ### Pipeline
-Detect P-wave -&gt; Grouping -&gt; Location -&gt; Magnitude -&gt; Intensity
+Detect P-wave -> Grouping -> Location -> Magnitude -> Intensity
 
 ### ML for Intensity
 - Use **3 sec P-wave**, ~**15 sec leading time**
@@ -95,12 +304,12 @@ Detect P-wave -&gt; Grouping -&gt; Location -&gt; Magnitude -&gt; Intensity
 - Self-supervised: extracts features from unlabeled data
 
 ### Components
-1. Feature Encoder: waveform -&gt; embeddings
+1. Feature Encoder: waveform -> embeddings
 2. Context Encoder: 12-layer Transformer
-3. Masking &amp; Quantization: masked prediction
+3. Masking & Quantization: masked prediction
 
 ### Workflow
-Pre-training (unlabeled) -&gt; Fine-tuning (CNN Decoder) -&gt; Inference
+Pre-training (unlabeled) -> Fine-tuning (CNN Decoder) -> Inference
 
 ---
 
@@ -114,7 +323,7 @@ Pre-training (unlabeled) -&gt; Fine-tuning (CNN Decoder) -&gt; Inference
 | seismo | Researcher | Modeling, experiments, trends |
 
 ### Automated Workflow
-Event trigger (.rep) -&gt; Data dispatch -&gt; Plotting -&gt; Modeling -&gt; Report
+Event trigger (.rep) -> Data dispatch -> Plotting -> Modeling -> Report
 
 ---
 
@@ -132,7 +341,8 @@ Event trigger (.rep) -&gt; Data dispatch -&gt; Plotting -&gt; Modeling -&gt; Rep
 - SSL enables feature extraction from unlabeled data
 - LEM brings new era for seismic monitoring
 - Multi-agent collaboration reshaping EEW workflows
-</pre></div><div style="background:#f7f7f7;border-left:4px solid #3498db;margin:20px 0;padding:15px"><h3 style="margin:0 0 10px 0">03 Taiwan EEW Evolution</h3><pre style="white-space:pre-wrap;word-break:break-word;font-size:14px"># Evolution of Taiwan Earthquake Early Warning System
+`},
+    {file:'03_Taiwan_EEW_Evolution.md',text:`# Evolution of Taiwan Earthquake Early Warning System
 
 - Date: 2026-06-12  |  Event: Chiayi County Disaster Prevention Training
 - Speaker: Da-Yi Chen  |  Organization: CWA Seismological Center
@@ -142,7 +352,7 @@ Event trigger (.rep) -&gt; Data dispatch -&gt; Plotting -&gt; Modeling -&gt; Rep
 ## Taiwan Seismic Environment
 
 - Philippine Sea vs. Eurasia: **7-8 cm/yr** convergence
-- **7 major disasters** since 1900 (&gt;100 deaths each)
+- **7 major disasters** since 1900 (>100 deaths each)
 - Daily ~100 quakes, annual ~100 felt, every 30-40 yr major disaster
 
 ### Recent Disasters (10yr)
@@ -159,7 +369,7 @@ Event trigger (.rep) -&gt; Data dispatch -&gt; Plotting -&gt; Modeling -&gt; Rep
 - Estimate magnitude from P-wave before S-wave arrives
 
 ### Alert Conditions
-- M &gt;= 4.5 with intensity &gt;= 4, or M &gt;= 6 with intensity &gt;= 3
+- M >= 4.5 with intensity >= 4, or M >= 6 with intensity >= 3
 
 ### Channels
 PWS (cell broadcast), TV, internet, App, LINE, website
@@ -185,7 +395,7 @@ PWS (cell broadcast), TV, internet, App, LINE, website
 - Two events **4 sec apart**; system processed only first
 
 ### Deep Earthquakes
-- &gt;100km depth may underestimate surface intensity
+- >100km depth may underestimate surface intensity
 
 ### Tsunami
 
@@ -198,19 +408,19 @@ PWS (cell broadcast), TV, internet, App, LINE, website
 - **6 warning zones**, **4 wave-height levels**
 
 #### Case: 2024/04/03 M7.2 Hualien
-07:58 EQ -&gt; 08:11 Tsunami W1 -&gt; 10:00 W2 -&gt; 11:10 Cancel
+07:58 EQ -> 08:11 Tsunami W1 -> 10:00 W2 -> 11:10 Cancel
 
 #### Case: 2025/07/30 M8.8 Kamchatka
-07:25 EQ -&gt; 07:38 Info -&gt; 09:12 Alert -&gt; 11:40 Warning -&gt; 17:10 Cancel
+07:25 EQ -> 07:38 Info -> 09:12 Alert -> 11:40 Warning -> 17:10 Cancel
 
 ---
 
 ## Distribution Network
 
-- Direct to **&gt;4500 units**: 4100 schools, highways, railways, NCDR
+- Direct to **>4500 units**: 4100 schools, highways, railways, NCDR
 
 ### AI for Intensity
-- **3 sec P-wave** -&gt; ~**15 sec leading time**
+- **3 sec P-wave** -> ~**15 sec leading time**
 
 ---
 
@@ -218,7 +428,8 @@ PWS (cell broadcast), TV, internet, App, LINE, website
 1. Continuous EEW performance improvement
 2. Strengthen public-private cooperation
 3. From 102 sec to 7 sec - constant evolution
-</pre></div><div style="background:#f7f7f7;border-left:4px solid #3498db;margin:20px 0;padding:15px"><h3 style="margin:0 0 10px 0">04 2026 May EEW Report</h3><pre style="white-space:pre-wrap;word-break:break-word;font-size:14px"># May 2026 - Earthquake Early Warning System Report
+`},
+    {file:'04_2026_May_EEW_Report.md',text:`# May 2026 - Earthquake Early Warning System Report
 
 - Reporter: Yu-Chien Lin  |  Organization: CWA Seismological Center
 - Period: May 2026
@@ -235,7 +446,7 @@ PWS (cell broadcast), TV, internet, App, LINE, website
 |---------|-------|
 | PWS | 6 |
 | TV | 6 |
-| APP &amp; School | 11 |
+| APP & School | 11 |
 
 ---
 
@@ -280,4 +491,82 @@ PWS (cell broadcast), TV, internet, App, LINE, website
 2. Issuances: PWS 6, TV 6, APP/School 11
 3. Accuracy: 80-95% (+-1 intensity level)
 4. Best: 05/12 M5.6, 9.7 sec, 95% accuracy
-</pre></div><hr style="margin-top:40px"><footer style="text-align:center;color:#95a5a6">Central Weather Administration - EEW Project</footer></body></html>
+`},
+  ];
+
+  function mdItemHTML(filename, raw) {
+    const lines = raw.split('\n');
+    let body = '';
+    let inCode = false;
+    let codeContent = '';
+    let inTable = false;
+    let tableHTML = '';
+    for (const line of lines) {
+      if (line.startsWith('```')) {
+        if (inCode) {
+          body += '<pre>' + esc(codeContent) + '</pre>';
+          codeContent = '';
+          inCode = false;
+        } else {
+          inCode = true;
+        }
+        continue;
+      }
+      if (inCode) {
+        codeContent += line + '\n';
+        continue;
+      }
+      if (line.startsWith('|') && line.endsWith('|')) {
+        var cells = line.split('|').slice(1,-1);
+        var isSep = cells.every(function(c){ return /^[-:]+$/.test(c.trim()); });
+        if (isSep) continue;
+        if (!inTable) { inTable = true; tableHTML = '<table>'; }
+        tableHTML += '<tr>';
+        for (var j = 0; j < cells.length; j++) {
+          tableHTML += '<td>' + esc(cells[j].trim()) + '</td>';
+        }
+        tableHTML += '</tr>';
+        continue;
+      } else {
+        if (inTable) { inTable = false; body += tableHTML + '</table>'; tableHTML = ''; }
+      }
+      if (line.startsWith('# ')) {
+        body += '<h4>' + esc(line.slice(2)) + '</h4>';
+      } else if (line.startsWith('## ')) {
+        body += '<h5 style="font-size:1rem;color:#2c3e50;margin:0.75rem 0 0.25rem;">' + esc(line.slice(3)) + '</h5>';
+      } else if (line.startsWith('- ')) {
+        body += '<li>' + esc(line.slice(2)) + '</li>';
+      } else if (line.startsWith('* ')) {
+        body += '<li>' + esc(line.slice(2)) + '</li>';
+      } else if (/^\d+\.\s/.test(line)) {
+        body += '<li>' + esc(line.replace(/^\d+\.\s/, '')) + '</li>';
+      } else if (line.trim() === '') {
+        // noop
+      } else {
+        body += '<p>' + esc(line) + '</p>';
+      }
+    }
+    if (inCode && codeContent) { body += '<pre>' + esc(codeContent) + '</pre>'; }
+    if (inTable && tableHTML) { body += tableHTML + '</table>'; }
+    return '<div class="md-item"><h4><span class="badge">MD</span> ' + esc(filename) + '</h4>' + body + '</div>';
+  }
+
+  function esc(s) {
+    var d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+  }
+
+  /* Render all MD files */
+  var container = document.getElementById('mdContent');
+  var html = '';
+  for (var i = 0; i < mdFiles.length; i++) {
+    html += mdItemHTML(mdFiles[i].file, mdFiles[i].text);
+  }
+  container.innerHTML = html;
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
